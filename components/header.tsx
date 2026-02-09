@@ -28,35 +28,40 @@ export function Header() {
     return (
         <header
             className={cn(
-                "fixed top-0 z-50 w-full transition-all duration-300",
-                isScrolled
-                    ? "bg-background/80 backdrop-blur-md border-b border-border/40 py-2"
-                    : "bg-transparent py-4"
+                "fixed top-6 left-1/2 -translate-x-1/2 z-50 transition-all duration-300",
+                isScrolled ? "w-[90%] md:w-[600px]" : "w-[95%] md:w-[700px]"
             )}
         >
-            <div className="container flex h-12 items-center justify-between px-4 md:px-6 mx-auto">
+            <div className={cn(
+                "flex h-14 items-center justify-between px-6 rounded-full border border-white/10 bg-black/50 backdrop-blur-xl shadow-lg shadow-black/20 transition-all duration-300",
+                isScrolled ? "bg-black/70 border-white/15" : ""
+            )}>
                 <Link href="/" className="mr-6 flex items-center space-x-2">
-                    <span className="font-bold text-xl tracking-tighter">
-                        OXIFY LABS
+                    <span className="font-bold text-lg tracking-tighter">
+                        OXIFY
                     </span>
                 </Link>
-                <nav className="hidden lg:flex items-center gap-8 text-sm font-medium">
+                <nav className="hidden lg:flex items-center gap-6 text-sm font-medium">
                     {menuItems.map((item) => (
                         <Link
                             key={item.name}
                             href={item.href}
                             className={cn(
-                                "transition-colors hover:text-primary relative group",
+                                "transition-colors hover:text-primary relative group py-1",
                                 pathname === item.href ? "text-foreground" : "text-muted-foreground"
                             )}
                         >
                             {item.name}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
+                            <span className="absolute bottom-0 left-0 w-0 h-px bg-primary transition-all duration-300 group-hover:w-full" />
                         </Link>
                     ))}
                 </nav>
                 <div className="flex items-center gap-4">
-                    {/* Add any CTA buttons here if needed */}
+                    <Link href="#contact" className="hidden sm:block">
+                        <button className="text-xs font-mono bg-white/10 hover:bg-white/20 text-white px-4 py-1.5 rounded-full transition-colors border border-white/5">
+                            LET'S TALK
+                        </button>
+                    </Link>
                     <MobileMenu />
                 </div>
             </div>

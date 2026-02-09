@@ -17,210 +17,193 @@ export const Capabilities = () => {
                         Engineering, not just coding.
                     </h2>
                 </div>
-                <p className="text-zinc-400 max-w-sm text-right hidden md:block text-sm leading-relaxed font-mono">
-                    System Architecture v2.0 <br />
-                    Status: Nominal
-                </p>
+                <div className="hidden md:flex flex-col items-end gap-2">
+                    <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                        <span className="font-mono text-xs text-zinc-500">SYSTEM STATUS: OPTIMAL</span>
+                    </div>
+                </div>
             </div>
 
             <BentoGrid className="max-w-7xl mx-auto">
-                {/* 1. Large Feature - Architecture (Abstract Code / Logic) */}
+                {/* 1. System Architecture - Abstract Layers */}
                 <BentoItem
                     colSpan={2}
                     title="System Architecture"
                     description="Scalable microservices and distributed systems. We blueprint infrastructures that can handle millions of requests without breaking a sweat."
                     header={
-                        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-neutral-950 border border-white/5 relative overflow-hidden flex items-center justify-center group/card">
-                            {/* Abstract Logic Gates / Nodes */}
-                            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:32px_32px]" />
+                        <div className="flex flex-1 w-full h-full min-h-[12rem] rounded-xl bg-neutral-950/50 border border-white/5 relative overflow-hidden flex items-center justify-center group/card">
+                            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-700" />
 
-                            <div className="relative w-full h-full flex items-center justify-center gap-8">
-                                {/* Node 1 */}
-                                <motion.div
-                                    className="w-16 h-16 rounded-2xl bg-zinc-900 border border-white/10 flex items-center justify-center z-10 shadow-2xl relative"
-                                    whileHover={{ scale: 1.1 }}
-                                >
-                                    <Database className="text-blue-500 w-6 h-6" />
-                                    <div className="absolute -bottom-6 text-[10px] font-mono text-zinc-500">Master DB</div>
-                                </motion.div>
-
-                                {/* Connector */}
-                                <div className="w-16 h-[2px] bg-gradient-to-r from-blue-500/20 to-emerald-500/20 relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-white/20 w-1/2 animate-flow-right" />
-                                </div>
-
-                                {/* Node 2 */}
-                                <motion.div
-                                    className="w-16 h-16 rounded-2xl bg-zinc-900 border border-white/10 flex items-center justify-center z-10 shadow-2xl relative"
-                                    whileHover={{ scale: 1.1 }}
-                                >
-                                    <Server className="text-emerald-500 w-6 h-6" />
-                                    <div className="absolute -bottom-6 text-[10px] font-mono text-zinc-500">API Gateway</div>
-                                </motion.div>
-
-                                {/* Connector */}
-                                <div className="w-16 h-[2px] bg-gradient-to-r from-emerald-500/20 to-purple-500/20 relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-white/20 w-1/2 animate-flow-right" style={{ animationDelay: '0.5s' }} />
-                                </div>
-
-                                {/* Node 3 */}
-                                <motion.div
-                                    className="w-16 h-16 rounded-2xl bg-zinc-900 border border-white/10 flex items-center justify-center z-10 shadow-2xl relative"
-                                    whileHover={{ scale: 1.1 }}
-                                >
-                                    <Smartphone className="text-purple-500 w-6 h-6" />
-                                    <div className="absolute -bottom-6 text-[10px] font-mono text-zinc-500">Client</div>
-                                </motion.div>
+                            {/* Abstract Floating Planes */}
+                            <div className="relative w-48 h-32 [perspective:1000px]">
+                                {[0, 1, 2].map((i) => (
+                                    <motion.div
+                                        key={i}
+                                        className="absolute inset-0 rounded-xl border border-white/10 bg-white/5 backdrop-blur-sm shadow-2xl"
+                                        initial={{ rotateX: 60, rotateZ: -10, y: i * -20, opacity: 0.5 + i * 0.2, scale: 0.9 + i * 0.05 }}
+                                        whileHover={{ y: i * -30 - 10, rotateX: 50, transition: { duration: 0.4 } }}
+                                        transition={{ duration: 2, ease: "easeInOut", repeat: Infinity, repeatType: "reverse", delay: i * 0.2 }}
+                                        style={{ transformStyle: "preserve-3d" }}
+                                    />
+                                ))}
                             </div>
                         </div>
                     }
                     icon={<Layers className="h-6 w-6 text-primary" />}
                 />
 
-                {/* 2. Smaller Feature - Security (Lock Animation) */}
+                {/* 2. Security - Concentric Pulse */}
                 <BentoItem
                     title="Enterprise Security"
                     description="Zero-trust architecture by default. We implement bank-grade encryption and rigorous auth patterns."
                     header={
-                        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-neutral-900 border border-white/5 relative overflow-hidden flex items-center justify-center group/lock">
-                            <div className="relative">
-                                <div className="absolute inset-0 bg-emerald-500/20 blur-xl opacity-0 group-hover/lock:opacity-100 transition-opacity duration-500" />
-                                <Lock className="w-10 h-10 text-zinc-500 group-hover/lock:text-emerald-400 transition-colors duration-300" />
-                                <motion.div
-                                    className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-500 opacity-0 group-hover/lock:opacity-100"
-                                    initial={{ scale: 0 }}
-                                    whileHover={{ scale: 1 }}
-                                />
-                            </div>
-                        </div>
-                    }
-                    icon={<Lock className="h-4 w-4 text-neutral-300" />}
-                />
-
-                {/* 3. Smaller Feature - Frontend (UI Elements) */}
-                <BentoItem
-                    title="Frontend Engineering"
-                    description="Performance-obsessed interfaces. React Server Components, pure CSS, and 60fps animations."
-                    header={
-                        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-neutral-900 border border-white/5 relative overflow-hidden flex items-center justify-center p-4">
-                            <div className="w-full max-w-[180px] space-y-2">
-                                {/* Skeleton UI */}
-                                <motion.div
-                                    className="h-2 w-1/3 bg-zinc-800 rounded-full"
-                                    animate={{ opacity: [0.5, 1, 0.5] }}
-                                    transition={{ duration: 2, repeat: Infinity }}
-                                />
-                                <motion.div
-                                    className="h-16 w-full bg-zinc-800/50 rounded-lg border border-white/5"
-                                    whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.05)' }}
-                                />
-                                <div className="flex gap-2">
-                                    <div className="h-8 w-8 rounded-full bg-zinc-800/50" />
-                                    <div className="flex-1 space-y-1 py-1">
-                                        <div className="h-2 bg-zinc-800 rounded w-3/4"></div>
-                                        <div className="h-2 bg-zinc-800 rounded w-1/2"></div>
-                                    </div>
+                        <div className="flex flex-1 w-full h-full min-h-[12rem] rounded-xl bg-neutral-950/50 border border-white/5 relative overflow-hidden flex items-center justify-center group/lock">
+                            <div className="relative flex items-center justify-center">
+                                {/* Pulse Rings */}
+                                {[0, 1, 2].map((i) => (
+                                    <motion.div
+                                        key={i}
+                                        className="absolute rounded-full border border-primary/20"
+                                        style={{ width: (i + 1) * 60, height: (i + 1) * 60 }}
+                                        animate={{
+                                            scale: [1, 1.1, 1],
+                                            opacity: [0.3, 0.1, 0.3],
+                                            borderColor: ["rgba(255,255,255,0.2)", "rgba(255,255,255,0.1)", "rgba(255,255,255,0.2)"]
+                                        }}
+                                        transition={{ duration: 4, delay: i * 0.5, repeat: Infinity, ease: "easeInOut" }}
+                                    />
+                                ))}
+                                <div className="z-10 bg-neutral-950 p-4 rounded-full border border-white/10 relative">
+                                    <Lock className="w-6 h-6 text-primary" />
+                                    <div className="absolute inset-0 bg-primary/20 blur-lg rounded-full opacity-0 group-hover/lock:opacity-50 transition-opacity duration-500" />
                                 </div>
                             </div>
                         </div>
                     }
-                    icon={<Zap className="h-4 w-4 text-neutral-300" />}
+                    icon={<Lock className="h-6 w-6 text-primary" />}
                 />
 
-                {/* 4. Large Feature - Global Scale (Globe/Map) */}
+                {/* 3. Frontend - Interactive Cursor/Hover */}
+                <BentoItem
+                    title="Frontend Engineering"
+                    description="Performance-obsessed interfaces. React Server Components, pure CSS, and 60fps animations."
+                    header={
+                        <div className="flex flex-1 w-full h-full min-h-[12rem] rounded-xl bg-neutral-950/50 border border-white/5 relative overflow-hidden flex items-center justify-center group/ui">
+                            <div className="relative w-full max-w-[200px] h-32 bg-white/5 rounded-lg border border-white/5 overflow-hidden backdrop-blur-sm transition-all duration-300 group-hover/ui:border-white/20">
+                                <div className="absolute top-0 left-0 w-full h-8 border-b border-white/5 flex items-center px-3 gap-2">
+                                    <div className="w-2 h-2 rounded-full bg-white/20" />
+                                    <div className="w-2 h-2 rounded-full bg-white/20" />
+                                </div>
+                                <motion.div
+                                    className="absolute top-12 left-4 right-4 h-4 bg-white/10 rounded-sm"
+                                    animate={{ width: ["40%", "70%", "40%"] }}
+                                    transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
+                                />
+                                <motion.div
+                                    className="absolute top-20 left-4 w-12 h-8 bg-primary/20 rounded-sm border border-primary/30"
+                                    whileHover={{ scale: 1.1, backgroundColor: "rgba(255,255,255,0.2)" }}
+                                />
+                                {/* Cursor */}
+                                <motion.div
+                                    className="absolute w-4 h-4"
+                                    animate={{
+                                        x: [20, 80, 20],
+                                        y: [80, 85, 80]
+                                    }}
+                                    transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
+                                >
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="white" stroke="none">
+                                        <path d="M5.5 3.21l10.08 15.66c.26.4.06.94-.4 1.05l-3.33.81-2.92 5.06c-.23.4-.76.54-1.16.31l-1.46-.84c-.4-.23-.54-.76-.31-1.16l2.92-5.06-2.52-2.1c-.37-.31-.17-.9.31-1.01L5.5 3.21z" />
+                                    </svg>
+                                </motion.div>
+                            </div>
+                        </div>
+                    }
+                    icon={<Zap className="h-6 w-6 text-primary" />}
+                />
+
+                {/* 4. Global - Abstract Spinning Globe */}
                 <BentoItem
                     colSpan={2}
                     title="Global Deployment"
                     description="Edge-cached, globally distributed. We deploy where your users are to ensure sub-100ms latency worldwide."
                     header={
-                        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-neutral-950 border border-white/5 relative overflow-hidden flex items-center justify-center">
-                            {/* Abstract Map Dots */}
-                            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:16px_16px]" />
+                        <div className="flex flex-1 w-full h-full min-h-[12rem] rounded-xl bg-neutral-950/50 border border-white/5 relative overflow-hidden flex items-center justify-center">
+                            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
 
-                            <div className="relative w-full h-full">
-                                {/* Pulse Points */}
-                                <motion.div
-                                    className="absolute top-1/3 left-1/4 w-3 h-3 bg-blue-500 rounded-full"
-                                    animate={{ boxShadow: ['0 0 0 0px rgba(59,130,246,0.5)', '0 0 0 20px rgba(59,130,246,0)'] }}
-                                    transition={{ duration: 2, repeat: Infinity }}
-                                />
-                                <div className="absolute top-1/3 left-1/4 -mt-8 -ml-4 text-[10px] font-mono text-blue-400">US-EAST</div>
-
-                                <motion.div
-                                    className="absolute top-1/2 left-1/2 w-3 h-3 bg-purple-500 rounded-full"
-                                    animate={{ boxShadow: ['0 0 0 0px rgba(168,85,247,0.5)', '0 0 0 20px rgba(168,85,247,0)'], }}
-                                    transition={{ duration: 2.5, repeat: Infinity, delay: 0.5 }}
-                                />
-                                <div className="absolute top-1/2 left-1/2 -mt-8 -ml-4 text-[10px] font-mono text-purple-400">EU-WEST</div>
-
-                                <motion.div
-                                    className="absolute bottom-1/3 right-1/4 w-3 h-3 bg-emerald-500 rounded-full"
-                                    animate={{ boxShadow: ['0 0 0 0px rgba(16,185,129,0.5)', '0 0 0 20px rgba(16,185,129,0)'], }}
-                                    transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-                                />
-                                <div className="absolute bottom-1/3 right-1/4 -mt-8 -ml-4 text-[10px] font-mono text-emerald-400">AP-SOUTH</div>
-
-                                {/* Connecting Lines */}
-                                <svg className="absolute inset-0 w-full h-full pointer-events-none">
-                                    <motion.path
-                                        d="M 25% 33% Q 50% 10% 50% 50%"
-                                        fill="none"
-                                        stroke="url(#gradient-line-1)"
-                                        strokeWidth="1"
-                                        strokeDasharray="4 4"
+                            <div className="relative w-full h-full flex items-center justify-center overflow-hidden">
+                                {/* Latitude Lines */}
+                                <div className="absolute inset-0 flex items-center justify-center opacity-20">
+                                    <motion.div
+                                        className="w-[200%] h-[100px] border-y border-white rounded-[100%] absolute"
+                                        animate={{ rotate: 360 }}
+                                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                                     />
-                                    <motion.path
-                                        d="M 50% 50% Q 75% 80% 75% 66%"
-                                        fill="none"
-                                        stroke="url(#gradient-line-2)"
-                                        strokeWidth="1"
-                                        strokeDasharray="4 4"
+                                    <motion.div
+                                        className="w-[150%] h-[200px] border-x border-white rounded-[100%] absolute"
+                                        animate={{ rotate: -360 }}
+                                        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                                     />
-                                    <defs>
-                                        <linearGradient id="gradient-line-1" x1="0%" y1="0%" x2="100%" y2="0%">
-                                            <stop offset="0%" stopColor="rgba(59,130,246,0.5)" />
-                                            <stop offset="100%" stopColor="rgba(168,85,247,0.5)" />
-                                        </linearGradient>
-                                        <linearGradient id="gradient-line-2" x1="0%" y1="0%" x2="100%" y2="0%">
-                                            <stop offset="0%" stopColor="rgba(168,85,247,0.5)" />
-                                            <stop offset="100%" stopColor="rgba(16,185,129,0.5)" />
-                                        </linearGradient>
-                                    </defs>
-                                </svg>
+                                </div>
+                                <Globe className="w-32 h-32 text-white/5 absolute" strokeWidth={0.5} />
+
+                                {/* Orbital Dots */}
+                                {[0, 1, 2, 3].map((i) => (
+                                    <motion.div
+                                        key={i}
+                                        className="absolute w-1.5 h-1.5 bg-primary rounded-full shadow-[0_0_10px_rgba(255,255,255,0.5)]"
+                                        animate={{
+                                            x: Math.cos(i) * 100,
+                                            y: Math.sin(i * 1.5) * 40,
+                                            scale: [0.5, 1, 0.5],
+                                            opacity: [0.2, 1, 0.2]
+                                        }}
+                                        transition={{
+                                            duration: 3 + i,
+                                            repeat: Infinity,
+                                            repeatType: "reverse",
+                                            ease: "easeInOut"
+                                        }}
+                                    />
+                                ))}
                             </div>
                         </div>
                     }
-                    icon={<Globe className="h-4 w-4 text-neutral-300" />}
+                    icon={<Globe className="h-6 w-6 text-primary" />}
                 />
 
-                {/* 5. Code Quality Feature */}
+                {/* 5. Clean Code - Geometric Precision */}
                 <BentoItem
                     title="Clean Code"
                     description="We write self-documenting, typed code. No 'any', no magic strings, just pure, maintainable logic."
                     header={
-                        <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-neutral-900 border border-white/5 relative overflow-hidden flex items-center justify-center p-4">
-                            <div className="w-full font-mono text-[10px] text-zinc-400 leading-snug p-2 rounded bg-black/40 border border-white/5">
-                                <span className="text-purple-400">interface</span> <span className="text-yellow-200">System</span> {'{'} <br />
-                                &nbsp;&nbsp;<span className="text-blue-400">scale</span>: <span className="text-emerald-400">"global"</span>;<br />
-                                &nbsp;&nbsp;<span className="text-blue-400">uptime</span>: <span className="text-emerald-400">99.99</span>;<br />
-                                {'}'}
+                        <div className="flex flex-1 w-full h-full min-h-[12rem] rounded-xl bg-neutral-950/50 border border-white/5 relative overflow-hidden flex items-center justify-center">
+                            <div className="grid grid-cols-4 gap-2 opacity-50">
+                                {Array.from({ length: 16 }).map((_, i) => (
+                                    <motion.div
+                                        key={i}
+                                        className="w-8 h-8 rounded-md bg-white/5 border border-white/5"
+                                        initial={{ opacity: 0.2 }}
+                                        whileHover={{ scale: 0.9, backgroundColor: "rgba(255,255,255,0.2)", borderColor: "rgba(255,255,255,0.5)" }}
+                                        animate={{
+                                            opacity: [0.2, 0.5, 0.2],
+                                            borderColor: ["rgba(255,255,255,0.05)", "rgba(255,255,255,0.1)", "rgba(255,255,255,0.05)"]
+                                        }}
+                                        transition={{
+                                            duration: 2,
+                                            delay: i * 0.1,
+                                            repeat: Infinity,
+                                            repeatType: "reverse"
+                                        }}
+                                    />
+                                ))}
                             </div>
                         </div>
                     }
-                    icon={<Code2 className="h-4 w-4 text-neutral-300" />}
+                    icon={<Code2 className="h-6 w-6 text-primary" />}
                 />
-
             </BentoGrid>
-
-            <style jsx global>{`
-                @keyframes flow-right {
-                    0% { transform: translateX(-100%); }
-                    100% { transform: translateX(200%); }
-                }
-                .animate-flow-right {
-                    animation: flow-right 2s linear infinite;
-                }
-            `}</style>
         </section>
     );
 };
