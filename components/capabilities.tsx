@@ -74,7 +74,7 @@ export const Capabilities = () => {
                             </div>
                         </div>
                     }
-                    icon={<Layers className="h-4 w-4 text-neutral-300" />}
+                    icon={<Layers className="h-6 w-6 text-primary" />}
                 />
 
                 {/* 2. Smaller Feature - Security (Lock Animation) */}
