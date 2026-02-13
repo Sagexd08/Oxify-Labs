@@ -19,7 +19,8 @@ export function Header() {
     }, []);
 
     const menuItems = [
-        { name: "About", href: "#about", external: false },
+        { name: "About", href: "/#about", external: false },
+        { name: "Team", href: "/team", external: false },
         { name: "LinkedIn", href: "https://www.linkedin.com/company/oxify-labs/", external: true },
         { name: "Email", href: "mailto:sohomchatterjee07@gmail.com", external: true },
     ];
